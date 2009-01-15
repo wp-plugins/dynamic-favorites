@@ -2,7 +2,7 @@
 /*
 Plugin Name: Dynamic Favorites
 Plugin URI: http://sivel.net/wordpress/
-Description: Populates the favorites drop down menu, introduced in WordPress 2.7, with links based on actual page accesses.  Lists the pages you actually use most frequently.
+Description: Populates the favorites drop down menu, introduced in WP 2.7, with links based on actual page accesses. Lists the pages you actually use the most.
 Author: Matt Martz
 Version: 1.0
 Author URI: http://sivel.net/
