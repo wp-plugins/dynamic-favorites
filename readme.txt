@@ -6,11 +6,11 @@ Requires at least: 2.7
 Tested up to: 2.7
 Stable tag: 1.0
 
-Populates the favorites drop down menu, introduced in WP 2.7, with links based on actual page accesses. Lists the pages you actually use the most.
+Populates the admin favorites drop down menu, introduced in WP 2.7, with links based on actual page accesses. Lists the pages you actually use the most.
 
 == Description ==
 
-Populates the favorites drop down menu, introduced in WP 2.7, with links based on actual page accesses. Lists the pages you actually use the most.
+Populates the admin favorites drop down menu, introduced in WP 2.7, with links based on actual page accesses. Lists the pages you actually use the most.
 
 Tracks admin page accesses and maintains a running total of those page accesses. Based on the top admin page accesses, this plugin will display a, configurable, number of favorites in the drop down menu.
 
