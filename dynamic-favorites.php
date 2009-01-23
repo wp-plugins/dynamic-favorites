@@ -15,8 +15,13 @@ class dynamic_favorites {
 	// Table Post Fix
 	var $postfix = 'favorites';
 
+	// Stores the table name value
+	var $table_name = '';
+
 	// Action/Filter/Activation Hooks
 	function dynamic_favorites() {
+		global $wpdb;
+		$this->table_name = $wpdb->prefix . $this->postfix;
 		add_action('admin_head', array(&$this, 'update'));
 		add_action('delete_user', array(&$this, 'delete'));
 		add_action('admin_menu', array(&$this, 'add_page'));
@@ -30,9 +35,8 @@ class dynamic_favorites {
 	// Initialize the plugin dependencies
 	function init() {
 		global $wpdb;
-		$table_name = $wpdb->prefix . $this->postfix;
-		if ( $wpdb->get_var("SHOW TABLES LIKE $table_name") == '' ) {
-			$query_create = "CREATE TABLE $table_name (
+		if ( $wpdb->get_var("SHOW TABLES LIKE $this->table_name") == '' ) {
+			$query_create = "CREATE TABLE $this->table_name (
 				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 				user_id bigint(20) unsigned NOT NULL,
 				uri varchar(100) NOT NULL,
@@ -48,7 +52,6 @@ class dynamic_favorites {
 	// Update the favorites on admin page requests
 	function update() {
 		global $wpdb;
-		$table_name = $wpdb->prefix . $this->postfix;
 		if ( stristr($_SERVER['SCRIPT_FILENAME'], '/wp-admin/index.php') && empty($_SERVER['QUERY_STRING']) )
 			return;
 		if ( stristr($_SERVER['REQUEST_URI'], 'media-upload.php') || stristr($_SERVER['REQUEST_URI'], 'update.php') )
@@ -123,14 +126,14 @@ class dynamic_favorites {
 			$page_title = $title;
 		if ( !strstr($uri, '?') && strstr($uri, '&') )
 			$uri = preg_replace('/&/', '?', $uri, 1);
-		$query_uri = "SELECT count FROM $table_name WHERE user_id=%d AND uri=%s";
+		$query_uri = "SELECT count FROM $this->table_name WHERE user_id=%d AND uri=%s";
 		$count = $wpdb->get_var($wpdb->prepare($query_uri, $user_id, $uri));
 		if ( isset($count) ) {
 			$count++;
-			$query_update = "UPDATE $table_name SET count=%d WHERE user_id=%d AND uri=%s";
+			$query_update = "UPDATE $this->table_name SET count=%d WHERE user_id=%d AND uri=%s";
 			$wpdb->query($wpdb->prepare($query_update, $count, $user_id, $uri));
 		} else {
-			$query_insert = "INSERT INTO $table_name (user_id,uri,title,count) VALUES (%d,%s,%s,%d)";
+			$query_insert = "INSERT INTO $this->table_name (user_id,uri,title,count) VALUES (%d,%s,%s,%d)";
 			$wpdb->query($wpdb->prepare($query_insert, $user_id, $uri, $page_title, 1));
 		}
 	}
@@ -138,7 +141,6 @@ class dynamic_favorites {
 	// Populate the favorites drop down with the recorded favorites
 	function populate($favorites) {
 		global $wpdb, $current_user;
-		$table_name = $wpdb->prefix . $this->postfix;
 		$user_id = $current_user->ID;
 		if ( current_user_can('level_10') )
 			$level = 'level_10';
@@ -151,7 +153,7 @@ class dynamic_favorites {
 		elseif ( current_user_can('level_0') )
 			$level = 'level_0';
 		$limit = (int) get_option('dynamic_favorites_limit');
-		$query_select = "SELECT uri,title FROM $table_name WHERE user_id=%d ORDER BY count DESC LIMIT %d";
+		$query_select = "SELECT uri,title FROM $this->table_name WHERE user_id=%d ORDER BY count DESC LIMIT %d";
 		$dynamic_favorites = $wpdb->get_results($wpdb->prepare($query_select, $user_id, $limit)); 
 		if ( count($dynamic_favorites) )
 			$favorites = array();
@@ -166,8 +168,7 @@ class dynamic_favorites {
 	// Delete favorites from table based on user_id
 	function delete($user_id) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . $this->postfix;
-		$query_delete = "DELETE FROM $table_name WHERE user_id=%d";
+		$query_delete = "DELETE FROM $this->table_name WHERE user_id=%d";
 		$wpdb->query($wpdb->prepare($query_delete, $user_id));
 	}
 
