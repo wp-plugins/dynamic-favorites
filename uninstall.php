@@ -3,8 +3,8 @@
 if( ! defined('ABSPATH') && ! defined('WP_UNINSTALL_PLUGIN') )
 	exit();
 
-// Delete shadowbox option from options table and drop the options table
+// Delete options from options table and drop the favorites table
 global $wpdb;
-$wpdb->query('DROP TABLE wp_favorites');
+$wpdb->query('DROP TABLE ' . $wpdb->prefix . 'favorites');
 delete_option('dynamic_favorites_limit');
 ?>
