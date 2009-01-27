@@ -4,7 +4,7 @@ Plugin Name: Dynamic Favorites
 Plugin URI: http://sivel.net/wordpress/
 Description: Populates the favorites drop down menu, introduced in WordPress 2.7, with links based on actual page accesses.  Lists the pages you actually use most frequently.
 Author: Matt Martz
-Version: 1.1
+Version: 1.2
 Author URI: http://sivel.net/
 */
 
@@ -175,7 +175,7 @@ class dynamic_favorites {
 	// Add the settings page
 	function add_page() {
 		if ( current_user_can('manage_options') && function_exists('add_options_page') ) :
-			add_options_page('Dynamic Favorites', 'Dynamic Favorites', 'manage_options', 'dynamic-favorites', 'dynamic_favorites_admin_page');
+			add_options_page('Dynamic Favorites', 'Dynamic Favorites', 'manage_options', 'dynamic-favorites', array(&$this, 'admin_page'));
 		endif;
 	}
 

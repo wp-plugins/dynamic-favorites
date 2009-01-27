@@ -4,7 +4,7 @@ Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=C3UA7
 Tags: dynamic-favorites, dynamic, favorites, 2.7, admin
 Requires at least: 2.7
 Tested up to: 2.7
-Stable tag: 1.1
+Stable tag: 1.2
 
 Populates the favorites drop down menu, introduced in 2.7, with links based on actual page accesses. Lists the pages you actually use most.
 
@@ -52,6 +52,9 @@ directory
 1. Optional: Visit your profile to reset your list of items in the favorites menu.
 
 == Change Log ==
+
+= 1.2 (2009-01-27): =
+* Fixed function reference for call to add the options page
 
 = 1.1 (2009-01-26): =
 * Added prepare statements for the sql queries
