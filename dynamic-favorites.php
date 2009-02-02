@@ -160,7 +160,7 @@ class dynamic_favorites {
 		foreach ( $dynamic_favorites as $favorite ) {
 			$uri = $favorite->uri;
 			$title = $favorite->title;
-			$favorites[$uri] = array($title, $level);
+			$favorites[htmlentities($uri)] = array($title, $level);
 		}
 		return $favorites;
 	}
