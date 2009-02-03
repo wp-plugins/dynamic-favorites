@@ -6,6 +6,10 @@ Description: Populates the favorites drop down menu, introduced in WordPress 2.7
 Author: Matt Martz
 Version: 1.2
 Author URI: http://sivel.net/
+
+        Copyright (c) 2009 Matt Martz (http://sivel.net)
+        Dynamic Favorites is released under the GNU General Public License (GPL)
+        http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
 // Only run the code if we are in the admin
