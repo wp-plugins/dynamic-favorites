@@ -47,7 +47,7 @@ directory
 1. Optional: Visit the options page in the Admin at `Settings>Dynamic Favorites` to set the limit of items to disaplay in the favorites drop down.
 1. Optional: Visit your profile to reset your list of items in the favorites menu.
 
-== Change Log ==
+== Changelog ==
 
 = 1.0 (2009-01-15): =
 * Initial Public Release
