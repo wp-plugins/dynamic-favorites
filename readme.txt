@@ -3,7 +3,7 @@ Contributors: ansimation, sivel
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=C3UA7TDWM4NLQ&lc=US&item_name=Donations%20for%20Sivel%2enet%20WordPress%20Plugins&cn=Add%20special%20instructions%20to%20the%20seller&no_shipping=1&rm=1&return=http%3a%2f%2fsivel%2enet%2fthanks&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: dynamic-favorites, dynamic, favorites, 2.7, admin
 Requires at least: 2.7
-Tested up to: 2.7
+Tested up to: 2.8.4
 Stable tag: 1.3
 
 Populates the favorites drop down menu, introduced in 2.7, with links based on actual page accesses. Lists the pages you actually use most.
@@ -54,7 +54,7 @@ directory
 == Changelog ==
 
 = 1.3 (2008-02-04): =
-* XHTML 1.0 fixes for links in drop down 
+* XHTML 1.0 fixes for links in drop down
 
 = 1.2 (2009-01-27): =
 * Fixed function reference for call to add the options page
