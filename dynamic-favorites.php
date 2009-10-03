@@ -1,15 +1,18 @@
 <?php
 /*
 Plugin Name: Dynamic Favorites
-Plugin URI: http://sivel.net/wordpress/dynamic-favorites/
+Plugin URI: http://www.travisballard.com/wordpress/dynamic-favorites-wordpress-plugin/
 Description: Populates the favorites drop down menu, introduced in WordPress 2.7, with links based on actual page accesses.  Lists the pages you actually use most frequently.
-Author: Matt Martz
+Author: Travis Ballard
 Version: 1.3
-Author URI: http://sivel.net/
+Author URI: http://www.travisballard.com/
 
         Copyright (c) 2009 Matt Martz (http://sivel.net)
         Dynamic Favorites is released under the GNU General Public License (GPL)
         http://www.gnu.org/licenses/gpl-2.0.txt
+
+        Now maintained by Travis Ballard
+        Copyright (c) 2009 Travis Ballard ( http://www.travisballard.com )
 */
 
 // Only run the code if we are in the admin
@@ -119,7 +122,7 @@ class dynamic_favorites {
 						$page_title = $title;
 						break;
 					default:
-						$page_title = "$title - " . $_GET[$arg];	
+						$page_title = "$title - " . $_GET[$arg];
 						break;
 				}
 				if ( ($arg == 'action' && strstr($_GET[$arg],'edit')) || $arg != 'action' )
@@ -158,7 +161,7 @@ class dynamic_favorites {
 			$level = 'level_0';
 		$limit = (int) get_option('dynamic_favorites_limit');
 		$query_select = "SELECT uri,title FROM $this->table_name WHERE user_id=%d ORDER BY count DESC LIMIT %d";
-		$dynamic_favorites = $wpdb->get_results($wpdb->prepare($query_select, $user_id, $limit)); 
+		$dynamic_favorites = $wpdb->get_results($wpdb->prepare($query_select, $user_id, $limit));
 		if ( count($dynamic_favorites) )
 			$favorites = array();
 		foreach ( $dynamic_favorites as $favorite ) {
@@ -197,7 +200,7 @@ class dynamic_favorites {
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
-			   			Favorites Limit		     
+			   			Favorites Limit
 					</th>
 					<td>
 						<input type="text" name="dynamic_favorites_limit" value="<?php echo get_option('dynamic_favorites_limit'); ?>" size="3" />
@@ -220,7 +223,7 @@ class dynamic_favorites {
 	<tr>
 		<th><label for="dynamic_favorites_reset">Reset Dymanic Favorites</label></th>
 		<td>
-	
+
 			<select name="dynamic_favorites_reset" id="dynamic_favorites_reset">
 				<option value="false" selected="selected">false</option>
 				<option value="true">true</option>
